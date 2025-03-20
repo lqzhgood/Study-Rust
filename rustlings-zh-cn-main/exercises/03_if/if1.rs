@@ -7,6 +7,11 @@ fn bigger(a: i32, b: i32) -> i32 {
     // - 另一个函数调用
     // - 额外的变量(仅能使用`a`和`b`)
 
+    if a > b {
+        a
+    } else {
+        b
+    }
 }
 
 fn main() {

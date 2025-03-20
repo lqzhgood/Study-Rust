@@ -3,13 +3,17 @@ fn array_and_vec() -> ([i32; 4], Vec<i32>) {
 
     // TODO: 创建一个名为 `v` 的动态数组(vector)，并且包含与数组 `a` 完全相同的元素。
     // 使用 vector 宏。
-    // let v = ???;
+    let v = vec![10, 20, 30, 40];
+
+    let _b = Vec::from(a);
+    println!("{:?}", _b);
 
     (a, v)
 }
 
 fn main() {
     // (可选)你可以选择性地在此处进行试验。
+    array_and_vec();
 }
 
 #[cfg(test)]

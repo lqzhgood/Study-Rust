@@ -1,4 +1,3 @@
-
 // 这是针对以下章节内容的一个小测验:
 // - 字符串(Strings)
 // - 动态数组(Vecs)
@@ -16,7 +15,7 @@
 // 确定的情况如下:
 // - 输入将会是一个由长度为2的元组构成的动态数组，
 //   其中第一个元素是字符串，第二个元素是命令。
-// - 输出元素将会是一个字符串数组。 
+// - 输出元素将会是一个字符串数组。
 
 enum Command {
     Uppercase,
@@ -28,7 +27,18 @@ mod my_module {
     use super::Command;
 
     // TODO: 按照上述要求实现该函数。
-    // pub fn transformer(input: ???) -> ??? { ??? }
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
+        let mut arr = Vec::new();
+        for (string, command) in input {
+            let new_string = match command {
+                Command::Uppercase => string.to_uppercase(),
+                Command::Trim => string.trim().to_string(),
+                Command::Append(n) => string + &"bar".repeat(n),
+            };
+            arr.push(new_string);
+        }
+        arr
+    }
 }
 
 fn main() {
@@ -38,7 +48,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     // TODO: 我们需要引入什么才能使 `transformer` 在作用域内可用呢?
-    // use ???;
+    use super::my_module::transformer;
     use super::Command;
 
     #[test]

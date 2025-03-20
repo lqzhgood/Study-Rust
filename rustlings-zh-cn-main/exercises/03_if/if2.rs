@@ -2,8 +2,10 @@
 fn picky_eater(food: &str) -> &str {
     if food == "草莓" {
         "美味!"
+    } else if food == "土豆" {
+        "还行吧"
     } else {
-        1
+        "不吃"
     }
 }
 
