@@ -4,6 +4,8 @@
 // 如果能用一行代码做到这一点，在代码风格上会加分哦！
 // use ???;
 
+use std::time::{SystemTime, UNIX_EPOCH};
+
 fn main() {
     match SystemTime::now().duration_since(UNIX_EPOCH) {
         Ok(n) => println!("1970-01-01 00:00:00 UTC was {} seconds ago!", n.as_secs()),
