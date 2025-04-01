@@ -6,7 +6,7 @@ fn is_a_color_word(attempt: &str) -> bool {
 fn main() {
     let word = String::from("green"); // 不要修改此行代码。
 
-    if is_a_color_word(word) {
+    if is_a_color_word(&word) {
         println!("那是一个表示颜色的词!");
     } else {
         println!("那似乎不是一个表示颜色的词。");
