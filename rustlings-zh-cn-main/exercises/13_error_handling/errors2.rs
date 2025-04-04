@@ -3,7 +3,7 @@
 // 游戏玩家将输入他们想要购买的物品数量，而 `total_cost` 函数将计算这些物品的总成本。
 // 由于玩家输入的是数量，所以我们得到的是一个字符串。他们可能输入了任何东西，而不仅仅是数字！
 //
-// 目前，这个函数根本没有处理错误情况。我们要做的是: 
+// 目前，这个函数根本没有处理错误情况。我们要做的是:
 // 如果我们在一个不是数字的字符串上调用 `total_cost` 函数，该函数将返回一个 `ParseIntError`。
 // 在这种情况下，我们希望立即从我们的函数中返回该错误，而不是尝试进行乘法和加法运算。
 //
@@ -16,7 +16,12 @@ fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
     let cost_per_item = 5;
 
     // TODO: 处理上述错误情况。
-    let qty = item_quantity.parse::<i32>();
+    // let qty = item_quantity.parse::<i32>()?;
+
+    let qty: i32 = match item_quantity.parse::<i32>() {
+        Ok(v) => v,
+        Err(e) => return Err(e),
+    };
 
     Ok(qty * cost_per_item + processing_fee)
 }

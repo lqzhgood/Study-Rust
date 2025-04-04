@@ -7,7 +7,7 @@
 // 并且你只关心它是一个实现了特定trait(特征)的类型这种情况。
 // 要做到这一点，`Box` 会被声明为 `Box<dyn Trait>` 类型，
 // 其中 `Trait` 就是编译器在该上下文中所使用的任何值上查找的特征。
-// 对于本练习而言，这个上下文就是那些可能在 `Result` 中返回的错误情况。 
+// 对于本练习而言，这个上下文就是那些可能在 `Result` 中返回的错误情况。
 
 use std::error::Error;
 use std::fmt;
@@ -46,7 +46,7 @@ impl PositiveNonzeroInteger {
 
 // TODO: 添加正确的返回类型 `Result<(), Box<dyn???>>`。
 // 我们可以用什么来描述这两种错误呢？是否存在一个这两种错误都实现的特征(trait)呢?
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     let pretend_user_input = "42";
     let x: i64 = pretend_user_input.parse()?;
     println!("output={:?}", PositiveNonzeroInteger::new(x)?);

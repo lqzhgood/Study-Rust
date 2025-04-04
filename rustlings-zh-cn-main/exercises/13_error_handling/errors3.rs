@@ -13,7 +13,7 @@ fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
 }
 
 // TODO: 通过更改 `main` 函数的签名和函数体来修复编译器错误。
-fn main() {
+fn main() -> Result<(), ParseIntError> {
     let mut tokens = 100;
     let pretend_user_input = "8";
 
@@ -26,4 +26,6 @@ fn main() {
         tokens -= cost;
         println!("You now have {tokens} tokens.");
     }
+
+    Ok(())
 }

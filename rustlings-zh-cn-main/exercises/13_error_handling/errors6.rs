@@ -1,6 +1,6 @@
 // 对于库(lib)代码而言，不建议使用像 `Box<dyn Error>` 这样能捕获所有错误的类型，
 // 因为调用者可能希望基于错误内容来做决策，而不是将错误打印出来或者进一步传播它。
-// 这里，我们定义了一个自定义错误类型，以便当我们的函数返回错误时，调用者能够决定下一步该怎么做。 
+// 这里，我们定义了一个自定义错误类型，以便当我们的函数返回错误时，调用者能够决定下一步该怎么做。
 
 use std::num::ParseIntError;
 
@@ -23,7 +23,9 @@ impl ParsePosNonzeroError {
     }
 
     // TODO: 在此处添加另一个错误转换(error conversion)函数。
-    // fn from_parse_int(???) -> Self { ??? }
+    fn from_parse_int(err: ParseIntError) -> Self {
+        Self::ParseInt(err)
+    }
 }
 
 #[derive(PartialEq, Debug)]
@@ -41,7 +43,7 @@ impl PositiveNonzeroInteger {
     fn parse(s: &str) -> Result<Self, ParsePosNonzeroError> {
         // TODO: 将这里修改为返回一个合适的错误，
         // 而不是在 `parse()` 返回错误时引发程序崩溃(panic)。
-        let x: i64 = s.parse().unwrap();
+        let x: i64 = s.parse().map_err(ParsePosNonzeroError::from_parse_int)?;
         Self::new(x).map_err(ParsePosNonzeroError::from_creation)
     }
 }
