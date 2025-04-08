@@ -5,7 +5,7 @@
 fn main() {
     // TODO: 通过为动态数组 `Vec<T>` 的类型添加注解来修复编译器错误。
     // 选择 `T` 作为某种可以由 `u8` 和 `i8` 创建的整数类型。
-    let mut numbers = Vec::new();
+    let mut numbers: Vec<i16> = Vec::new();
 
     // 不要修改此行代码。
     let n1: u8 = 42;

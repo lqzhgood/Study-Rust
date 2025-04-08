@@ -1,9 +1,9 @@
 // 当结构体持有引用时，也需要生命周期。
 
 // TODO: 修复关于此结构体的编译器错误。
-struct Book {
-    author: &str,
-    title: &str,
+struct Book<'a> {
+    author: &'a str,
+    title: &'a str,
 }
 
 fn main() {

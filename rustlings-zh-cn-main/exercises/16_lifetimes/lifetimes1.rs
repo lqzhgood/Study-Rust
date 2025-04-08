@@ -4,7 +4,7 @@
 // 如果它们的所有者超出了作用域会怎样呢?
 
 // TODO: 通过更新此函数的签名，修复编译器错误。
-fn longest(x: &str, y: &str) -> &str {
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() {
         x
     } else {
