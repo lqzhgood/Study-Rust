@@ -28,13 +28,14 @@ mod tests {
     fn correct_width_and_height() {
         // TODO: 这个测试应该检查 `rect` 是否具有我们传递给其构造函数的尺寸大小。
         let rect = Rectangle::new(10, 20);
-        assert_eq!(todo!(), 10); // 检查宽(width)
-        assert_eq!(todo!(), 20); // 检查高(height)
+        assert_eq!(rect.width, 10); // 检查宽(width)
+        assert_eq!(rect.height, 20); // 检查高(height)
     }
 
     // TODO: 这个测试应该检查当我们尝试创建一个宽度为负的矩形时，
     // 程序是否会产生恐慌(panic)。
     #[test]
+    #[should_panic]
     fn negative_width() {
         let _rect = Rectangle::new(-10, 10);
     }
@@ -42,6 +43,7 @@ mod tests {
     // TODO: 这个测试应该检查当我们尝试创建一个高度为负的矩形时，
     // 程序是否会产生恐慌(panic)。
     #[test]
+    #[should_panic]
     fn negative_height() {
         let _rect = Rectangle::new(10, -10);
     }
