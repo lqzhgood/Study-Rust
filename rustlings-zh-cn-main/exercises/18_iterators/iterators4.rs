@@ -11,6 +11,17 @@ fn factorial(num: u64) -> u64 {
     //   - 额外的变量
     // 额外挑战，不使用:
     //   - 递归
+
+    // let mut result = 1;
+    // for x in 2..=num {
+    //     result *= x;
+    // }
+    // result
+
+    #[allow(clippy::unnecessary_fold)]
+    (2..=num).fold(1, |acc, x| acc * x)
+
+    // (2..=num).product()
 }
 
 fn main() {
@@ -40,4 +51,3 @@ mod tests {
         assert_eq!(factorial(4), 24);
     }
 }
-

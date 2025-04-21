@@ -11,21 +11,35 @@ enum DivisionError {
 // TODO: 如果 `a` 能被 `b` 整除，那么计算 `a` 除以 `b` 的结果。
 // 否则，返回一个合适的错误。
 fn divide(a: i64, b: i64) -> Result<i64, DivisionError> {
-    todo!();
+    if b == 0 {
+        return Err(DivisionError::DivideByZero);
+    }
+
+    if a == i64::MIN && b == -1 {
+        return Err(DivisionError::IntegerOverflow);
+    }
+
+    if a % b != 0 {
+        return Err(DivisionError::NotDivisible);
+    }
+
+    Ok(a / b)
 }
 
 // TODO: 添加正确的返回类型并完成函数体。
 // 期望的输出: `Ok([1, 11, 1426, 3])`
-fn result_with_list() {
+fn result_with_list() -> Result<Vec<i64>, DivisionError> {
     let numbers = [27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
+    division_results.collect()
 }
 
 // TODO: 添加正确的返回类型并完成函数体。
 // 期望的输出: `[Ok(1), Ok(11), Ok(1426), Ok(3)]`
-fn list_of_results() {
+fn list_of_results() -> Vec<Result<i64, DivisionError>> {
     let numbers = [27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
+    division_results.collect()
 }
 
 fn main() {
